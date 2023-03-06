@@ -1,0 +1,11 @@
+{
+  "name": "CP",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@kafkajs/confluent-schema-registry": "^3.3.0",
+    "https": "^1.0.0",
+    "kafkajs": "^2.2.3"
+  }
+}

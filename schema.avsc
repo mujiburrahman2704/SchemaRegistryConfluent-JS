@@ -1,0 +1,18 @@
+{
+    "type": "record",
+    "namespace": "com.example",
+    "name": "Customer",
+    "doc": "Avro Schema for our costumers",
+    "fields": [
+        {
+            "name": "id",
+            "type": "int",
+            "doc": "Id our costumer"
+        },
+        {
+            "name": "time",
+            "type": "float",
+            "doc": "time login user to website"
+        }
+    ]
+}

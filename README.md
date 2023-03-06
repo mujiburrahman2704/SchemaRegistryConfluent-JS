@@ -1,0 +1,1 @@
+# SchemaRegistryConfluent-JS

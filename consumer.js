@@ -1,6 +1,5 @@
 const { Kafka } = require('kafkajs')
 const fs = require('fs')
-const { SchemaRegistry } = require('@kafkajs/confluent-schema-registry')
 
 const kafka = new Kafka({ 
   clientId: 'my-app',
@@ -14,11 +13,8 @@ const kafka = new Kafka({
   sasl: {
     mechanism: 'plain',
     username: 'admin',
-    password: 'admin-secret'
+    password: 'kafka123'
   }
-})
-const registry = new SchemaRegistry({ 
-  host: ['https://broker1.muji.com:8081','https://broker2.muji.com:8081','https://broker3.muji.com:8081']
 })
 const consumer = kafka.consumer({ 
   groupId: 'test-group'
@@ -26,12 +22,10 @@ const consumer = kafka.consumer({
 
 const run = async () => {
   await consumer.connect()
-  await consumer.subscribe({ topic: 'Avro', fromBeginning: true })
+  await consumer.subscribe({ topic: 'replication-01.test.collection' })
 
   await consumer.run({
     eachMessage: async ({ topic, pratition, message }) => {
-      const decodedKey = await registry.decode(message.key)
-      const decodeValue = await registry.decode(message.value)
       console.log({
         value: message.value.toString(),
         })
